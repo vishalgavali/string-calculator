@@ -10,4 +10,7 @@ describe("String Calculator Tests", () => {
   it('Input as multiple numbers', function () {
     equal(add('5,80,2,3'), 90);
   });
+  it('Input with \\n delimiter along with comma.', function () {
+    equal(add('1\n2,3'), 6);
+  });
 });
