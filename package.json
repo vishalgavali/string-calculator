@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "build": "tsc index.ts",
+    "build": "tsc --target es2024 index.ts",
     "test": "mocha",
     "start": "node index.js"
   },
