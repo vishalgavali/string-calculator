@@ -25,4 +25,10 @@ describe("String Calculator Tests", () => {
   it('Numbers greater than 1000 should be ignored.', function () {
     equal(add('2,1000,1001,1002,5000'), 1002);
   })
+  it('Delimiter greater than one character.', function () {
+    equal(add('//[***]\n1***2***3'), 6);
+  })
+  it('Delimiter greater than one character (2).', function () {
+    equal(add('//[;;]\n6;;2;;4'), 12);
+  })
 });

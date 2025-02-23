@@ -4,18 +4,27 @@ export function add(numbers) {
     let delimiters = ", \n";
     if (numbers.startsWith("//")) {
         const delimiterAndNumbers = numbers.split("\n");
-        delimiters += "," + delimiterAndNumbers[0].substring(2);
         numbers = delimiterAndNumbers[1];
+        if (delimiterAndNumbers[0][2] === "[") {
+            let delimitorIndexEnd = delimiterAndNumbers[0].indexOf("]");
+            delimiters +=
+                "," + delimiterAndNumbers[0].substring(3, delimitorIndexEnd);
+        }
+        else {
+            delimiters += "," + delimiterAndNumbers[0].substring(2);
+        }
     }
     const stringNumbers = numbers.split(new RegExp(`[${delimiters}]`));
     let parsedNumbers = [];
     let negativenumbers = [];
-    stringNumbers.forEach(number => {
-        let parsedNumber = parseInt(number, 10);
-        if (parsedNumber < 0)
-            negativenumbers.push(parsedNumber);
-        else if (parsedNumber < 1001)
-            parsedNumbers.push(parsedNumber);
+    stringNumbers.forEach((number) => {
+        if (number) {
+            let parsedNumber = parseInt(number, 10);
+            if (parsedNumber < 0)
+                negativenumbers.push(parsedNumber);
+            else if (parsedNumber < 1001)
+                parsedNumbers.push(parsedNumber);
+        }
     });
     if (negativenumbers.length > 0)
         return `negative numbers not allowed ${negativenumbers.join()}`;
