@@ -4,9 +4,20 @@ export function add(numbers) {
     let delimiters = ", \n";
     if (numbers.startsWith("//")) {
         const delimiterAndNumbers = numbers.split("\n");
-        delimiters += ',' + delimiterAndNumbers[0].substring(2);
+        delimiters += "," + delimiterAndNumbers[0].substring(2);
         numbers = delimiterAndNumbers[1];
     }
     const stringNumbers = numbers.split(new RegExp(`[${delimiters}]`));
-    return stringNumbers.reduce((accumulator, currentValue) => parseInt(currentValue, 10) + accumulator, 0);
+    let parsedNumbers = [];
+    let negativenumbers = [];
+    stringNumbers.forEach(number => {
+        let parsedNumber = parseInt(number, 10);
+        if (parsedNumber < 0)
+            negativenumbers.push(parsedNumber);
+        else
+            parsedNumbers.push(parsedNumber);
+    });
+    if (negativenumbers.length > 0)
+        return `negative numbers not allowed ${negativenumbers.join()}`;
+    return parsedNumbers.reduce((accumulator, currentValue) => currentValue + accumulator, 0);
 }

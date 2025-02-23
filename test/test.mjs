@@ -15,8 +15,11 @@ describe("String Calculator Tests", () => {
   });
   it('Input with custom delimiter.', function () {
     equal(add('//;\n1;2;5;8'), 16);
-  })
+  });
   it('Input with custom delimiter (2).', function () {
     equal(add('//-\n1-2-5-8-10'), 26);
+  });
+  it('Calling with negative number exception.', function () {
+    equal(add('1,3,-5,-10,15,-25'), 'negative numbers not allowed -5,-10,-25');
   })
 });
