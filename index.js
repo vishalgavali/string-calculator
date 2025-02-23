@@ -14,7 +14,7 @@ export function add(numbers) {
         let parsedNumber = parseInt(number, 10);
         if (parsedNumber < 0)
             negativenumbers.push(parsedNumber);
-        else
+        else if (parsedNumber < 1001)
             parsedNumbers.push(parsedNumber);
     });
     if (negativenumbers.length > 0)

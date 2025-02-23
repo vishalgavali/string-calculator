@@ -12,7 +12,7 @@ export function add(numbers: string): number | string {
   stringNumbers.forEach(number => {
     let parsedNumber: number = parseInt(number, 10);
     if (parsedNumber < 0) negativenumbers.push(parsedNumber);
-    else parsedNumbers.push(parsedNumber);
+    else if (parsedNumber < 1001) parsedNumbers.push(parsedNumber);
   });
   if (negativenumbers.length > 0) return `negative numbers not allowed ${negativenumbers.join()}`;
   return parsedNumbers.reduce(

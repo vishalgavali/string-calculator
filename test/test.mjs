@@ -19,7 +19,10 @@ describe("String Calculator Tests", () => {
   it('Input with custom delimiter (2).', function () {
     equal(add('//-\n1-2-5-8-10'), 26);
   });
-  it('Calling with negative number exception.', function () {
+  it('Negative number exception.', function () {
     equal(add('1,3,-5,-10,15,-25'), 'negative numbers not allowed -5,-10,-25');
+  })
+  it('Numbers greater than 1000 should be ignored.', function () {
+    equal(add('2,1000,1001,1002,5000'), 1002);
   })
 });
