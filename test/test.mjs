@@ -31,4 +31,10 @@ describe("String Calculator Tests", () => {
   it('Delimiter greater than one character (2).', function () {
     equal(add('//[;;]\n6;;2;;4'), 12);
   })
+  it('Multiple delimiters.', function () {
+    equal(add('//[*][%]\n1*2%3'), 6);
+  })
+  it('Multiple delimiters with length greater than 1.', function () {
+    equal(add('//[***][%%]\n1***2%%3***5'), 11);
+  })
 });

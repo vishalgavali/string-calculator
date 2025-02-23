@@ -5,9 +5,12 @@ export function add(numbers: string): number | string {
     const delimiterAndNumbers = numbers.split("\n");
     numbers = delimiterAndNumbers[1];
     if (delimiterAndNumbers[0][2] === "[") {
-      let delimitorIndexEnd = delimiterAndNumbers[0].indexOf("]");
-      delimiters +=
-        "," + delimiterAndNumbers[0].substring(3, delimitorIndexEnd);
+      let delimitorString = delimiterAndNumbers[0].substring(
+        3,
+        delimiterAndNumbers[0].length - 1,
+      );
+      let multipleDelimiters = delimitorString.split("][");
+      delimiters += "," + multipleDelimiters.join();
     } else {
       delimiters += "," + delimiterAndNumbers[0].substring(2);
     }
